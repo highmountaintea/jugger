@@ -40,27 +40,6 @@ export function interval(fn, ms, options) { // eslint-disable-line no-unused-var
     settings.halted = true;
   }
 
-  // async function thread() {
-  //   try {
-  //     const control = { wait, newInterval, pause, resume, halt };
-  //     const result = fn(control);
-  //     if (result != null && result.then != null) {
-  //       await result;
-  //     }
-  //   } catch (e) {
-  //     // swallow, may invoke error handler in the future when options is implemented
-  //   } finally {
-  //     let nextMs;
-  //     if (settings.nextMs != null) {
-  //       nextMs = settings.nextMs;
-  //       delete settings.nextMs;
-  //     } else {
-  //       nextMs = settings.ms;
-  //     }
-  //     if (!settings.halted) setTimeout(thread, nextMs);
-  //   }
-  // }
-
   function thread() {
     function queueNext() {
       // stop if halted is set
@@ -89,6 +68,7 @@ export function interval(fn, ms, options) { // eslint-disable-line no-unused-var
     Promise.resolve(result).finally(queueNext);
   }
 
-
   setTimeout(thread, settings.ms);
+
+  return { wait, newInterval, pause, resume, halt };
 }
