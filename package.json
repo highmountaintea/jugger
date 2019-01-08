@@ -1,6 +1,6 @@
 {
   "name": "jugger",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "utilities to handle concurrent or periodic tasks, replacing setInterval or setTimer",
   "main": "lib/index.js",
   "scripts": {
