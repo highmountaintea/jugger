@@ -45,3 +45,27 @@ const interval1 = jugger.interval(async (control) => {
   }
 }, 5000);
 ```
+
+`swallow(fn)`
+* `fn()` - the function to run
+* returns nothing
+
+`swallow` simplies runs a function, and swallows any error, including promise errors. It is especially useful when trying to log errors in a catch clause.
+
+```js
+const jugger = require('jugger');
+
+async function someBusinessLogic() {
+  try {
+    // perform some logic
+    const result = await someService();
+    const output = result * 3 + 4;
+    logger.log('success', output);
+  } catch (e) {
+    // we cannot afford the logging code to throw exception here, so we need to wrap it in swallow
+    jugger.swallow(() => {
+      logger.error(e);
+    });
+  }
+}
+```
