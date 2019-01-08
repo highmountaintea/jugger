@@ -1,9 +1,10 @@
 {
   "name": "jugger",
   "version": "0.1.0",
-  "description": "",
-  "main": "index.js",
+  "description": "utilities to handle concurrent or periodic tasks, replacing setInterval or setTimer",
+  "main": "lib/index.js",
   "scripts": {
+    "compile": "babel src --out-dir lib",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/highmountaintea/jugger/issues"
   },
-  "homepage": "https://github.com/highmountaintea/jugger#readme"
+  "homepage": "https://github.com/highmountaintea/jugger#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "babel-preset-minify": "^0.5.0"
+  }
 }
